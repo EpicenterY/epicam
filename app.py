@@ -1,12 +1,13 @@
+import eventlet
+eventlet.monkey_patch()
+
 import subprocess
 import threading
-from flask import Flask, render_template
-from flask_socketio import SocketIO
-import eventlet
 import time
 import base64
+from flask import Flask, render_template
+from flask_socketio import SocketIO
 
-eventlet.monkey_patch()
 
 app = Flask(__name__)
 socketio = SocketIO(app)
