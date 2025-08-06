@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Raspberry Pi WebCam</title>
+  </head>
+  <body>
+    <h1>📷 Live Camera Feed</h1>
+    <img src="{{ url_for('video_feed') }}" width="640" />
+
+    <h2>⏱️ Timelapse Controls</h2>
+    <form action="/start_timelapse" method="post">
+      <button type="submit">Start Timelapse</button>
+    </form>
+    <form action="/stop_timelapse" method="post">
+      <button type="submit">Stop Timelapse</button>
+    </form>
+    <form action="/generate_gif" method="post">
+      <button type="submit">Generate GIF</button>
+    </form>
+    <a href="/download_gif" target="_blank">📥 Download GIF</a>
+  </body>
+</html>
