@@ -13,13 +13,13 @@ picam2.start()
 def generate_frames():
     while True:
         frame = picam2.capture_array()
-        img = Image.fromarray(frame)
+        img = Image.fromarray(frame).convert("RGB")  # RGBA → RGB 변환
         stream = io.BytesIO()
         img.save(stream, format='JPEG')
         jpeg = stream.getvalue()
         yield (b'--frame\r\n'
                b'Content-Type: image/jpeg\r\n\r\n' + jpeg + b'\r\n')
-        time.sleep(0.05)  # 약 20fps
+        time.sleep(0.05)
 
 @app.route('/')
 def index():
